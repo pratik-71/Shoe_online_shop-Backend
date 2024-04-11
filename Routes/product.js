@@ -10,7 +10,7 @@ const router = express()
 router.use(express.json())
 
 // --------------- For products -------------
-router.get("/all_product",all_product)
+router.get("/all_product/:param",all_product)
 router.get("/get_categories",get_categories)
 router.post("/add_product",add_product)
 router.get("/get_product/:id",get_product)

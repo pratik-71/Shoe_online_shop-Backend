@@ -67,7 +67,9 @@ const sign_in = async(req,res)=>{
                 isAdmin : user.role===ADMIN
 
             },
-            "1@3456Qw-"
+            "1@3456Qw-",{
+                expiresIn:"30d",
+            }
         )
 
         res.header(AUTH_TOKEN,token).send({

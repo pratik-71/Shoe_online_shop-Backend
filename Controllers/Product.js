@@ -58,21 +58,30 @@ const update_product = async (req, res) => {
 
 const all_product = async (req, res) => {
   try {
-    const products = await product_model.find();
-    const requiredProducts = products.map((product) => ({
-      _id: product._id,
-      imageURL: product.imageURL,
-      title: product.title,
-      price: product.price,
-      category: product.category,
-      gender: product.gender,
-      color: product.color,
+    const { param } = req.params;
+    let products;
+
+    if (param === "All" || !param) { 
+      products = await product_model.find();
+    } else {
+      products = await product_model.find({ category: param });
+    }
+
+    const requiredProducts = products.map(({ _id, imageURL, title, price, category, gender, color }) => ({
+      _id,
+      imageURL,
+      title,
+      price,
+      category,
+      gender,
+      color,
     }));
     res.status(200).json(requiredProducts);
   } catch (error) {
-    res.status(400).json({ error: error });
+    res.status(400).json({ error: "Failed to retrieve products" });
   }
 };
+
 
 const delete_product = async (req, res) => {
   try {

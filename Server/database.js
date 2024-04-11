@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 
-const connection_string = "mongodb://localhost:27017/Shoe_shop";
+const connection_string = "mongodb+srv://pratikdabhade66344:RPQi5bLked7qfz3y@cluster0.sjy9ilx.mongodb.net/Shoe_shop";
 
 const connection = () => {
   mongoose
